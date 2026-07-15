@@ -1,0 +1,36 @@
+# === Secrets — never commit ===
+# MUNGE authentication key (cluster-wide shared secret)
+munge.key
+*.munge
+# SSH keys
+id_*
+*.pem
+*_rsa
+*_ed25519
+*.key
+# Environment / credential files
+*.env
+secrets*
+*.secret
+
+# === Large build artifacts (rebuildable) ===
+# Warewulf provisioning images and containers
+*.img
+*.img.gz
+*.tar
+*.tar.gz
+/srv/warewulf/
+provision/images/
+chroots/
+
+# === Logs ===
+*.log
+cluster-validation-*.log
+
+# === OS / editor cruft ===
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.idea/
+.vscode/

@@ -1,11 +1,8 @@
-[README.md](https://github.com/user-attachments/files/30042116/README.md)
 # On-Premises HPC Cluster
 
 A three-node, on-premises High-Performance Computing (HPC) cluster built on **Rocky Linux 9.8** and the **OpenHPC 3.4** software stack. The cluster provides diskless (stateless) provisioning with **Warewulf 4**, job scheduling with **Slurm**, low-latency **InfiniBand** RDMA interconnect for MPI, and a shared **Lustre** parallel filesystem.
 
-The design and every deployment step were validated end-to-end, including survival of a full cold reboot with no manual intervention required.
-
-> **Repository name:** rename this repository to whatever you prefer (e.g. `hpc-cluster-onprem`). This README is written as a reproducible build guide.
+The design and every deployment step were validated end-to-end, including survival of a full cold reboot with no manual intervention required. This README is written as a reproducible build guide.
 
 ---
 
@@ -354,4 +351,5 @@ Core cluster is complete and validated. Remaining items are optional:
 
 ## License
 
-No license specified yet. Add a `LICENSE` file (e.g. MIT or Apache-2.0) if you intend to share this publicly.
+Released under the [MIT License](LICENSE).
+                                                                                                                                                                      
