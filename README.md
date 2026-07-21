@@ -247,10 +247,12 @@ Run the following on the master to confirm the full stack is healthy. Wrap the b
 # [1] COLD BOOT CONFIRMED
 echo "=== [1] COLD BOOT CONFIRMED ===" && uptime && who -b
 ```
+![cold-boot](assets/cold-boot-test.png)
 ```bash
 # [2] LNET NID (ibs2 only, no eno1)
 echo "=== [2] LNET NID (ibs2 only, no eno1) ===" && lnetctl net show | grep -A4 'net type: tcp'
 ```
+![lnet](assets/lnet-test.png)
 ```bash
 # [3] LUSTRE CLIENT AUTO-MOUNT
 echo "=== [3] LUSTRE CLIENT AUTO-MOUNT ===" && \
@@ -259,10 +261,12 @@ echo "=== [3] LUSTRE CLIENT AUTO-MOUNT ===" && \
   mountpoint /mnt/lustre && \
   lfs df -h /mnt/lustre | grep -E 'MDT|OST|summary'
 ```
+![auto-mount](assets/auto-mount-test.png)
 ```bash
 # [4] SLURM CONTROLLER + NODES
 echo "=== [4] SLURM CONTROLLER + NODES ===" && systemctl is-active slurmctld && sinfo
 ```
+![slurm](assets/slurm-test.png)
 ```bash
 # [5] MPI INTER-NODE RDMA (UCX rc_verbs / QLogic qib0)
 module load gnu14 openmpi5 imb
@@ -271,6 +275,7 @@ unset OMPI_MCA_mtl OMPI_MCA_mtl_ofi_provider_include FI_PROVIDER
 echo "=== [5] MPI INTER-NODE RDMA ===" && \
   srun -N2 -n2 --mpi=pmix IMB-MPI1 PingPong 2>&1 | awk '/#bytes/{p=1} p'
 ```
+![mpi](assets/mpi-test.png)
 
 **Expected results (validated):**
 
