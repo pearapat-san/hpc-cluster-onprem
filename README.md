@@ -50,28 +50,7 @@ Key characteristics:
 
 ## Architecture
 
-```
-                 public switch (192.168.111.0/24)
-                              │
-                              │  eno1: 192.168.111.53
-                       ┌──────┴───────┐
-                       │    master    │  Rocky 9.8
-                       │ login +      │  Warewulf 4 + Slurm ctld
-                       │ provisioner  │  Lustre client
-                       └──────┬───────┘
-                              │  eno2: 192.168.100.10
-              private / provisioning switch (192.168.100.0/24)
-                     ┌────────┴─────────┐
-                     │                  │
-              ┌──────┴──────┐    ┌──────┴──────┐
-              │   compute   │    │   lustre    │
-              │ .11 (PXE)   │    │ .12 (PXE)   │
-              └──────┬──────┘    └──────┬──────┘
-                     │                  │
-                     └── InfiniBand ────┘
-              (ibs2, 192.168.200.0/24, QDR 40 Gb)
-              master .10 · compute .11 · lustre .12
-```
+![onprem-architecture](assets/onprem-diagram.png)
 
 The **private switch** is the provisioning and management network. Warewulf uses it for DHCP / TFTP / PXE boot. **PXE does not run over InfiniBand** because the QLogic HCA does not support PXE boot; InfiniBand carries only MPI and storage (LNet/IPoIB) traffic.
 
