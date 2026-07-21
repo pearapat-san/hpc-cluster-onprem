@@ -246,20 +246,24 @@ Run the following on the master to confirm the full stack is healthy. Wrap the b
 ```bash
 # [1] COLD BOOT CONFIRMED
 echo "=== [1] COLD BOOT CONFIRMED ===" && uptime && who -b
-
+```
+```bash
 # [2] LNET NID (ibs2 only, no eno1)
 echo "=== [2] LNET NID (ibs2 only, no eno1) ===" && lnetctl net show | grep -A4 'net type: tcp'
-
+```
+```bash
 # [3] LUSTRE CLIENT AUTO-MOUNT
 echo "=== [3] LUSTRE CLIENT AUTO-MOUNT ===" && \
   systemctl is-enabled lustre-client.service && \
   systemctl is-active lustre-client.service && \
   mountpoint /mnt/lustre && \
   lfs df -h /mnt/lustre | grep -E 'MDT|OST|summary'
-
+```
+```bash
 # [4] SLURM CONTROLLER + NODES
 echo "=== [4] SLURM CONTROLLER + NODES ===" && systemctl is-active slurmctld && sinfo
-
+```
+```bash
 # [5] MPI INTER-NODE RDMA (UCX rc_verbs / QLogic qib0)
 module load gnu14 openmpi5 imb
 export OMPI_MCA_pml=ucx UCX_TLS=rc_verbs,ud_verbs,sm,self UCX_NET_DEVICES=qib0:1
